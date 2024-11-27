@@ -1,12 +1,6 @@
-import {
-  ClerkProvider,
-  SignInButton,
-  SignedIn,
-  SignedOut,
-  UserButton,
-} from "@clerk/nextjs";
+import { ClerkProvider } from "@clerk/nextjs";
 import "./globals.css";
-import Link from "next/link";
+import Nav from "@/components/Nav";
 
 export const metadata = {
   title: "Create Next App",
@@ -17,17 +11,10 @@ export default function RootLayout({ children }) {
   return (
     <ClerkProvider>
       <html lang="en">
-        <body>
-          <nav>
-            <Link href="/">Home</Link>
-            <Link href="/posts">Posts</Link>
-          </nav>
-          <SignedOut>
-            <SignInButton />
-          </SignedOut>
-          <SignedIn>
-            <UserButton />
-          </SignedIn>
+        <body
+          className={`antialiased text-2xl h-screen w-screen flex flex-col`}
+        >
+          <Nav />
           {children}
         </body>
       </html>
