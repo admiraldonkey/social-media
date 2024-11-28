@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/*TODO: */
+/*
+- Abiltiy to edit user profile
+- Implement more error/not found pages
+- Implement UI components (Radix UI Primitive)
+- Style site
+- Individual user pages, display their name, bio and post by them (maybe liked by them)
+- Follower feature
+- Like posts
+- Enforce user bio 
+*/

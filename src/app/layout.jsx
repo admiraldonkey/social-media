@@ -11,9 +11,7 @@ export default function RootLayout({ children }) {
   return (
     <ClerkProvider>
       <html lang="en">
-        <body
-          className={`antialiased text-2xl h-screen w-screen flex flex-col`}
-        >
+        <body className={`text-2xl h-screen w-screen flex flex-col`}>
           <Nav />
           {children}
         </body>

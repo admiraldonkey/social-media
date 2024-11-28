@@ -1,9 +1,8 @@
-import { GetUserByClerk } from "./GetUser";
-import GetPosts from "./GetPosts";
+import { GetUser, GetPosts } from "./GetData";
 import DisplayPosts from "./DisplayPosts";
 
 export default async function UserProfile() {
-  const user = (await GetUserByClerk()).rows[0];
+  const user = await GetUser("clerk");
   const posts = await GetPosts("clerk", user.clerk_id);
   return (
     <div>

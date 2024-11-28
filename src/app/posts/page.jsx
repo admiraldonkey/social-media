@@ -1,4 +1,4 @@
-import GetPosts from "@/components/GetPosts";
+import { GetPosts } from "@/components/GetData";
 import PostForm from "@/components/PostForm";
 
 export default async function PostsPage() {

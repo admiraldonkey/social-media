@@ -1,4 +1,4 @@
-import GetPosts from "@/components/GetPosts";
+import { GetPosts } from "@/components/GetData";
 import { notFound } from "next/navigation";
 
 export default async function IndividualPostPage({ params }) {

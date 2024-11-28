@@ -1,12 +1,16 @@
-import { GetUserByUserId } from "@/components/GetUser";
-import { notFound } from "next/navigation";
+import { GetUser } from "@/components/GetData";
+import { notFound, redirect } from "next/navigation";
 
 export default async function IndividualUserPage({ params }) {
   const userId = (await params).user_id;
-  const userData = await GetUserByUserId(userId);
-  const user = userData.rows[0];
-  if (userData.rowCount != 1) {
+  const user = await GetUser("user", userId);
+  const clerkUser = await GetUser("clerk");
+  const isOwnProfile = user.clerk_id === clerkUser.clerk_id;
+
+  if (!user) {
     notFound();
+  } else if (isOwnProfile) {
+    redirect("/user");
   }
 
   return (
