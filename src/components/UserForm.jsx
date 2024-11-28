@@ -8,7 +8,7 @@ export default function UserForm() {
     const { userId } = await auth();
     const username = formData.get("username");
     const bio = formData.get("bio");
-    db.query(
+    await db.query(
       `INSERT INTO users (username, bio, clerk_id) VALUES ($1, $2, $3)`,
       [username, bio, userId]
     );

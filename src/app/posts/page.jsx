@@ -1,4 +1,5 @@
 import { GetPosts } from "@/components/GetData";
+import DisplayPosts from "@/components/DisplayPosts";
 import PostForm from "@/components/PostForm";
 
 export default async function PostsPage() {
@@ -7,7 +8,8 @@ export default async function PostsPage() {
   return (
     <div>
       <h2>Db connection test:</h2>
-      {posts &&
+      <DisplayPosts postType="all" />
+      {/* {posts &&
         posts.map((post) => {
           return (
             <div key={post.id}>
@@ -15,7 +17,7 @@ export default async function PostsPage() {
               <p>{post.content}</p>
             </div>
           );
-        })}
+        })} */}
       <PostForm />
     </div>
   );
