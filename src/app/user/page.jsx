@@ -4,8 +4,7 @@ import UserProfile from "@/components/UserProfile";
 import { GetUser } from "@/components/GetData";
 
 export default async function UserPage() {
-  const user = GetUser("clerk");
-
+  const user = await GetUser("self");
   return (
     <div>
       <SignedIn>{user ? <UserProfile /> : <UserForm />}</SignedIn>
