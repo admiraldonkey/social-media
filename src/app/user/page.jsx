@@ -9,7 +9,12 @@ export default async function UserPage() {
     <div>
       <SignedIn>{user ? <UserProfile /> : <UserForm />}</SignedIn>
       <SignedOut>
-        <p>You need to sign in fam</p>
+        <div className="h-full flex justify-center">
+          <p className="text-4xl mt-20">
+            And how exactly do you expect me to fetch your profile if
+            you&apos;re not logged in? Off you go...
+          </p>
+        </div>
       </SignedOut>
     </div>
   );

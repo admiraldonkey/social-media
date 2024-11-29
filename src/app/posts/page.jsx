@@ -1,23 +1,21 @@
-import { GetPosts } from "@/components/GetData";
 import DisplayPosts from "@/components/DisplayPosts";
 import PostForm from "@/components/PostForm";
+import { SortPosts } from "@/components/SortPosts";
+import { SignedIn, SignedOut } from "@clerk/nextjs";
 
-export default async function PostsPage() {
-  const posts = await GetPosts();
-
+export default async function PostsPage({ searchParams }) {
+  const sortBy = (await searchParams).sort || "all";
   return (
-    <div>
-      <h2>Db connection test:</h2>
-      <DisplayPosts postType="all" />
-      {/* {posts &&
-        posts.map((post) => {
-          return (
-            <div key={post.id}>
-              <h2>Posted by: {post.clerk_id}</h2>
-              <p>{post.content}</p>
-            </div>
-          );
-        })} */}
+    <div className="overflow-x-hidden">
+      <div className="flex flex-col px-6 py-6">
+        <SignedOut>
+          <h4>Sign In to filter posts</h4>
+        </SignedOut>
+        <SignedIn>
+          <SortPosts />
+        </SignedIn>
+      </div>
+      <DisplayPosts postType={`${sortBy}`} />
       <PostForm />
     </div>
   );

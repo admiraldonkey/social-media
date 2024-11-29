@@ -1,13 +1,9 @@
 import { SignUp } from "@clerk/nextjs";
-import Link from "next/link";
 
 export default function SignUpPage() {
   return (
-    <div>
+    <div className="h-full flex flex-col justify-center items-center bg-myDarkGrey">
       <SignUp />
-      <h2>
-        Already signed up? <Link href="/sign-in">Sign In</Link> instead.
-      </h2>
     </div>
   );
 }
