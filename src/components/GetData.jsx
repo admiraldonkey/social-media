@@ -24,18 +24,26 @@ export async function GetUser(idType, id) {
 }
 
 export async function GetPosts(idType, id) {
-  let modifier = "";
+  let modifier =
+    "SELECT posts.id, posts.content, posts.likes, posts.clerk_id, users.username AS username, users.id as user_id FROM posts JOIN users ON posts.clerk_id = users.clerk_id";
   switch (idType) {
     case "post":
-      modifier = ` WHERE id = ${id}`;
+      // modifier = `SELECT posts.id, posts.content, posts.likes, posts.clerk_id, users.username AS username FROM posts JOIN users ON posts.clerk_id = users.clerk_id WHERE id = ${id}`;
+      modifier = modifier + ` WHERE id = ${id}`;
       break;
     case "clerk":
-      modifier = ` WHERE posts.clerk_id = '${id}'`;
+      // modifier = `SELECT posts.id, posts.content, posts.likes, posts.clerk_id, users.username AS username FROM posts JOIN users ON posts.clerk_id = users.clerk_id WHERE posts.clerk_id = '${id}'`;
+      modifier = modifier + ` WHERE posts.clerk_id = '${id}'`;
+      break;
+    case "followers":
+      modifier = `SELECT followers.user_id AS myid, followers.follows, posts.id AS id, posts.content, posts.likes, posts.clerk_id, users.username AS username, users.clerk_id AS follow_clerk, users.id as user_id FROM followers
+INNER JOIN users ON followers.follows = users.id
+INNER JOIN posts ON users.clerk_id = posts.clerk_id
+WHERE followers.user_id = ${id}`;
       break;
   }
-  const response = await db.query(
-    `SELECT posts.id, posts.content, posts.likes, posts.clerk_id, users.username AS username FROM posts JOIN users ON posts.clerk_id = users.clerk_id${modifier}`
-  );
+  console.log(modifier);
+  const response = await db.query(modifier);
   if (response.rowCount > 1) {
     const posts = response.rows;
     return posts;
