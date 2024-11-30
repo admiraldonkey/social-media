@@ -21,17 +21,17 @@ export default function UserForm() {
         <div className="bg-myDarkGrey p-4 rounded-3xl flex flex-col items-center w-4/5">
           <h2 className="text-4xl text-myLightBlue pb-2">Welcome!</h2>
           <h3 className="text-2xl text-white">
-            Please enter a username and bio to continue
+            Please enter a display name and bio to continue
           </h3>
           <form action={handleAddUser} className="flex flex-col w-3/5 mt-6">
             <label htmlFor="username" className="text-myLightBlue">
-              Username
+              Display Name
             </label>
             <input
               type="text"
               id="username"
               name="username"
-              placeholder="Enter Username"
+              placeholder="Enter display name"
               required
               className="px-1 py-1 mb-6 mt-2"
             />

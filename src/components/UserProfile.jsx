@@ -15,7 +15,7 @@ export default async function UserProfile() {
           <h2 className="text-4xl pb-2 underline underline-offset-4">
             My Profile
           </h2>
-          <h4 className="text-3xl py-2">Username</h4>
+          <h4 className="text-3xl py-2">Display Name</h4>
           <p className="text-white pb-5">{user.username}</p>
           <h4 className="text-3xl pb-2">Bio</h4>
           <p className="text-white pb-5">{user.bio}</p>

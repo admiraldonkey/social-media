@@ -12,7 +12,7 @@ export default function LikeButton({ postId, likes, path }) {
 
   return (
     <form action={handleLikePost} className="">
-      <button className="bg-myLightBlue text-myBlack hover:bg-myDarkBlue hover:text-white rounded-xl px-2 py-1">
+      <button className="bg-myLightBlue text-myBlack hover:bg-myDarkBlue hover:text-white rounded-xl px-2 py-1 ml-2">
         Like
       </button>
     </form>
