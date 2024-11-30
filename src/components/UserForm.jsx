@@ -2,7 +2,9 @@ import { db } from "@/lib/db";
 import { revalidatePath } from "next/cache";
 import { auth } from "@clerk/nextjs/server";
 
+// Form that will display to a new user, asking them to add their details after signing up
 export default function UserForm() {
+  // Adds the user details to the database
   async function handleAddUser(formData) {
     "use server";
     const { userId } = await auth();
@@ -12,6 +14,7 @@ export default function UserForm() {
       `INSERT INTO users (username, bio, clerk_id) VALUES ($1, $2, $3)`,
       [username, bio, userId]
     );
+    // Updates the path to display the user's profile page now it can be retrieved from db
     revalidatePath("/user");
   }
 
