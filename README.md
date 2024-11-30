@@ -5,13 +5,15 @@ Simple social media site with clerk user authentication
 ## Features
 
 - Users can create a new account by signing up via Clerk and then gets presented with a form to add their profile details.
-- Users can create posts, view other user's posts and profile pages, and follow other users.
+- Users can create posts, view other user's posts and profile pages, and follow other users. (demo user login at bottom of readme)
 - Main posts page displays all posts by default, with option for a logged in user to only view posts made by people they follow. Filter toggle implemented as a Radix UI primitive component.
 - Users can like other user's posts and click on the poster's name to access their user profile.
 - User profiles display their bio, follower information, and any posts they have made.
 - Styled with TailwindCss, posts have alternating styles.
 - Clerk SignedIn and SignedOut components used to dynamically render or restrict user as appropriate.
 - Authentication is currently somewhat lax to allow for easier feature/functionality testing. Would restrict some signup options if intended for real use.
+
+Login info for one user shown at bottom of this readme for demonstration purposes
 
 ## Future considerations
 
@@ -47,3 +49,8 @@ I wish I'd linked my posts table to my user table via user foreign key rather th
 Overall though, while I didn't have time to add a few things, I am proud of the things I was able to achieve. While complicated and probably not the best approach, I did like having a single point of call for many of the display components or db get queries (when I was able to understand my own code). Some of the things which took the longest to implement only translated to small UI changes, such as followers. For example, just the short follower sentence on the user profile has 8 different conditional renders and uses multiple functions.
 
 If I'd had more time and had been able to add the extra CRUD functionality, I was also planning to then give the site a silly theme where everything was in pirate speak (with the site being called something like "Social Meady-Yarr").
+
+### Demo user login:
+
+username: brian
+pass: IAmBrian
