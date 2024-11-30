@@ -4,7 +4,9 @@ import { auth } from "@clerk/nextjs/server";
 import { SignedIn, SignedOut } from "@clerk/nextjs";
 import { revalidatePath } from "next/cache";
 
+// Form for creating new posts
 export default function PostForm() {
+  // Handles submission of post content and it's associated user to the database.
   async function handleSubmitPost(formData) {
     "use server";
     const { userId } = await auth();
@@ -13,6 +15,7 @@ export default function PostForm() {
       content,
       userId,
     ]);
+    // Updates the posts page and then redirects the user to it so they can see their new post has been added.
     revalidatePath("/posts");
     redirect("/posts");
   }
@@ -21,6 +24,7 @@ export default function PostForm() {
     <div className="flex flex-col">
       <div className="flex flex-col items-center my-6">
         <div className="bg-myDarkGrey p-4 rounded-3xl flex flex-col items-center w-4/5">
+          {/* Only displays the form if user is logged in */}
           <SignedIn>
             <h2 className="text-4xl text-myLightBlue pb-2">New Post</h2>
             <form
@@ -49,6 +53,7 @@ export default function PostForm() {
               </div>
             </form>
           </SignedIn>
+          {/* Asks the user to sign in to make a post if not logged in */}
           <SignedOut>
             <h2>Please sign in to make a post</h2>
           </SignedOut>

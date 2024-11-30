@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Social Media Site
 
-## Getting Started
+Simple social media site with clerk user authentication
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Users can create a new account by signing up via Clerk and then gets presented with a form to add their profile details.
+- Users can create posts, view other user's posts and profile pages, and follow other users.
+- Main posts page displays all posts by default, with option for a logged in user to only view posts made by people they follow. Filter toggle implemented as a Radix UI primitive component.
+- Users can like other user's posts and click on the poster's name to access their user profile.
+- User profiles display their bio, follower information, and any posts they have made.
+- Styled with TailwindCss, posts have alternating styles.
+- Clerk SignedIn and SignedOut components used to dynamically render or restrict user as appropriate.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Future considerations
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+- Split followers on user page with option to view BOTH a list of users they follow and a list of users that follow them.
+- Add ability for users to edit or delete their own posts, and edit their own profile.
+- Implement comment functionality.
+- Reconsider approach with certain components used and if some of the more dynamic functions with lots of if/switch statements could have been handled better.
+- Give the site a theme.
+- Reconsider colours and make buttons and such more consistent across the site.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+# Reflection
 
-## Learn More
+## What requirements did you achieve?
 
-To learn more about Next.js, take a look at the following resources:
+All
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Were there any requirements or goals that you were unable to achieve?
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+N/A
 
-## Deploy on Vercel
+## If so, what was it that you found difficult about these tasks?
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+N/A
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## What went really well and what could have gone better?
+
+In hindsight I wish I would have used my previous project as a starting point instead of starting fresh. Would have allowed me to add far more functionality to flesh out the site and make it more interactive. As a fresh project, it feels a bit bare bones.
+
+I wanted to make better use of components with this project, but think I may have overdone it with the complexity of some of the display and get functions in an effort to minimise repeating code. As I added more features or reconsidered ways of doing things, it was all to easy to accidentally break something by trying to fix or add something else. When trying to debug it was also challenging to easily figure out what was going on, especially before I added the comments.
+
+I wish I'd linked my posts table to my user table via foreign key rather than clerk_id. As I had other instances where I needed to access posts via a user_id, it made it considerably more complicated, both in adding extra switch cases and parameters depending on which type was needed, and in the SQL queries themselves. By the point I realised how awkward it was, it would have been likely more work to change it.
+
+Overall though, while I didn't have time to add a few things, I am proud of the things I was able to achieve. While complicated and probably not the best approach, I did like having a single point of call for many of the display components or db get queries (when I was able to understand my own code). Some of the things which took the longest to implement only translated to small UI changes, such as followers. For example, just the short follower sentence on a user profile has 8 different conditional renders using multiple functions.
+
+If I'd had more time and had been able to add the extra CRUD functionality, I was also planning to give the site a silly theme where everything was in pirate speak (with the site being called something like "Social Meady-Yarr").

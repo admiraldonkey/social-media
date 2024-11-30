@@ -1,6 +1,7 @@
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import Link from "next/link";
 
+// Nav bar to display page links, site header and login/user button. Right side display changes depending on whether user is logged in
 export default function Nav() {
   return (
     <nav className="text-myLightBlue bg-myBlack shadow-lg shadow-myDarkGrey grid grid-cols-3 gap-3 text-4xl items-center">
@@ -13,7 +14,7 @@ export default function Nav() {
         </Link>
       </div>
       <div className="flex justify-center">
-        <h1 className="text-6xl py-4">Social Meady-Yarr</h1>
+        <h1 className="text-6xl py-4">Social Media</h1>
       </div>
       <div className="flex justify-evenly">
         <SignedOut>
